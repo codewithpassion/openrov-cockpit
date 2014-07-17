@@ -87,22 +87,23 @@ $( document ).ready(function() {
     var item = {
       counter: 0,
       labelText: "Example menu",
-      label: ko.observable(this.labelText),
+      label: ko.observable(),
       callback: function () {
         alert('example menu item from heads up menu');
       },
       left: function() {
         item.counter = item.counter -1;
-        item.label(this.labelText + ' ' + item.counter.toString());
+        item.label(item.labelText + ' ' + item.counter.toString());
       },
       right: function() {
         item.counter = item.counter +1;
-        item.label(this.labelText + ' ' + item.counter.toString());
+        item.label(item.labelText + ' ' + item.counter.toString());
       }
     };
     if (this.cockpit.extensionPoints.headsUpMenu) {
       this.cockpit.extensionPoints.headsUpMenu.register(item);
     }
+    item.label(item.labelText);
   };
   window.Cockpit.plugins.push(Example);
 });
