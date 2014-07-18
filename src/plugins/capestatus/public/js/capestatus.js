@@ -170,6 +170,21 @@
     this.cockpit.rov.on('status', function (data) {
       capes.UpdateStatusIndicators(data);
     });
+
+    var brighnessHeadsUp = {
+      type: 'custom',
+      label: 'foo',
+      content: "<button class='btn btn-large btn-block'>AAAA</button>",
+      callback: function () {
+        capes.cockpit.emit('rovpilot.toggleLights');
+      },
+      left: function() {
+      },
+      right: function() {
+      }
+    };
+    capes.cockpit.emit('headsUpMenu.register', brighnessHeadsUp);
+
   };
   capestatus.Capestatus.prototype.UpdateStatusIndicators = function UpdateStatusIndicators(data) {
     var self = this;

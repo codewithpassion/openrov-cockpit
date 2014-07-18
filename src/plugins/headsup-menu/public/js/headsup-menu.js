@@ -7,14 +7,30 @@
 
     self.cockpit = cockpit;
     self.items = ko.observableArray();
-    self.getTemplateName = function(item) { return 'menuRow-' + item.type; };
-
-    cockpit.extensionPoints.headsUpMenu = self;
+    self.getTemplateName = function(item) { return "menuRow-" + item.type };
 
     // Add required UI elements
-    cockpit.extensionPoints.videoContainer.append('<div id="headsup-menu-base"></div>');
-    var headsUpMenu = cockpit.extensionPoints.videoContainer.find('#headsup-menu-base');
+    $('#video-container').append('<div id="headsup-menu-base"></div>');
+    var headsUpMenu = $('#headsup-menu-base');
     headsUpMenu.hide();
+
+
+    this.cockpit.on(
+      'headsUpMenu.register',
+      function (item) {
+        var items = [].concat(item); // item can be a single object or an array
+        items.forEach(function (anItem) {
+          anItem.uniqueId = generateUUID();
+          if (anItem['type'] == undefined) {
+            anItem.type = "button";
+          }
+          if (anItem['type'] == 'custom') {
+            anItem.headsUpTemplateId = 'custom-' + anItem.uniqueId;
+            $('body').append('<script type="text/html" id="' + anItem.headsUpTemplateId + '">' + anItem.content + '</script>');
+          }
+          self.items.push(anItem);
+        });
+      });
 
     var menuItems = [];
     var currentSelected = -1;
