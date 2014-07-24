@@ -97,6 +97,12 @@ function Hardware() {
       hardware.emit('serial-recieved', status);
     }
 
+   //aux servo
+    if (commandText === 'xsrv.exe') {
+      hardware.emit('status', reader.parseStatus('xsrv.ext:' + commandParts[1]));
+    }
+
+    hardware.emit('status', reader.parseStatus('cmd:' + command));
   };
   hardware.close = function () {
     console.log('!Serial port closed');
