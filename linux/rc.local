@@ -10,6 +10,7 @@
 # bits.
 #
 
+
 if [ -f /sys/class/leds/beaglebone:green:heartbeat/ ]; then
   led0="/sys/class/leds/beaglebone:green:heartbeat"
   led1="/sys/class/leds/beaglebone:green:mmc0"

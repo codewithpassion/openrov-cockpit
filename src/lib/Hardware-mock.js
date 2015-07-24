@@ -101,7 +101,6 @@ function Hardware() {
     if (emitRawSerial) {
       hardware.emit('serial-recieved', status);
     }
-    hardware.emit('status', reader.parseStatus('cmd:' + command));
   };
   hardware.close = function () {
     console.log('!Serial port closed');

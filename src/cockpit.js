@@ -8,7 +8,6 @@
  */
 var CONFIG = require('./lib/config'), fs = require('fs'), express = require('express'), app = express(), server = require('http').createServer(app), io = require('socket.io').listen(server, { log: false, origins: '*:*' }), EventEmitter = require('events').EventEmitter, OpenROVCamera = require(CONFIG.OpenROVCamera), OpenROVController = require(CONFIG.OpenROVController), logger = require('./lib/logger').create(CONFIG), mkdirp = require('mkdirp'), path = require('path');
 var PluginLoader = require('./lib/PluginLoader');
-var ArduinoPhysics = require('./lib/ArduinoPhysics');
 var CockpitMessaging = require('./lib/CockpitMessaging');
 app.configure(function () {
   app.use(express.static(__dirname + '/static/'));
@@ -45,7 +44,6 @@ var deps = {
   cockpit: client,
   config: CONFIG,
   globalEventLoop: globalEventLoop,
-  physics: new ArduinoPhysics()
 };
 
 app.get('/config.js', function (req, res) {
