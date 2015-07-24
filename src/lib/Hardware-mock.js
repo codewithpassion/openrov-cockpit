@@ -81,6 +81,14 @@ function Hardware() {
         );
     }
 
+<<<<<<< HEAD
+=======
+    //aux servo
+    if (commandText === 'xsrv.exe') {
+      hardware.emit('status', reader.parseStatus('xsrv.ext:' + commandParts[1]));
+    }
+
+>>>>>>> cwp-software/feature/262-aux-servos
     // example tests for passthrough
     if (commandText === 'example_to_foo') {
       hardware.emitStatus('example_foo:' + commandParts[1]);
@@ -96,6 +104,7 @@ function Hardware() {
     if (emitRawSerial) {
       hardware.emit('serial-recieved', status);
     }
+<<<<<<< HEAD
 
    //aux servo
     if (commandText === 'xsrv.exe') {
@@ -103,6 +112,8 @@ function Hardware() {
     }
 
     hardware.emit('status', reader.parseStatus('cmd:' + command));
+=======
+>>>>>>> cwp-software/feature/262-aux-servos
   };
   hardware.close = function () {
     console.log('!Serial port closed');

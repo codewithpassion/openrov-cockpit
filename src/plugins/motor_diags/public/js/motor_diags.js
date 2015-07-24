@@ -92,7 +92,11 @@
   Motor_diags.prototype.setupSliders = function() {
     var motordiag = this;
 
+<<<<<<< HEAD
     Polymer.import(['bower_components/paper-slider/paper-slider.html'], function() {
+=======
+    Polymer.import(['/bower_components/paper-slider/paper-slider.html'], function() {
+>>>>>>> cwp-software/feature/262-aux-servos
       var port = motordiag.diagPanel.find('#portMotorSpeed');
       port.on('immediate-value-change', function() {
         motordiag.portMotorSlide(true);

@@ -20,6 +20,7 @@ var ledState = [
 	"0,0,0,0"
 ];
 
+<<<<<<< HEAD
 var leds;
 if (fs.existsSync('/sys/class/leds/beaglebone:green:heartbeat/')){
    leds = [
@@ -37,6 +38,14 @@ if (fs.existsSync('/sys/class/leds/beaglebone:green:heartbeat/')){
   ];
 }
 
+=======
+var leds = [
+	"/sys/class/leds/beaglebone:green:heartbeat/brightness",
+	"/sys/class/leds/beaglebone:green:mmc0/brightness",
+	"/sys/class/leds/beaglebone:green:usr2/brightness",
+	"/sys/class/leds/beaglebone:green:usr3/brightness"
+];
+>>>>>>> cwp-software/feature/262-aux-servos
 var patternIndex = 0;
 var buffer0 = new Buffer('0');
 var buffer255 = new Buffer('255');
@@ -75,3 +84,7 @@ function closeLeds() {
 	}
 
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> cwp-software/feature/262-aux-servos

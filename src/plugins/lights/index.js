@@ -2,7 +2,10 @@
   function Laser(name, deps) {
     console.log('Lights plugin loaded');
     var lights = 0;
+<<<<<<< HEAD
     var ArduinoHelper = require('../../lib/ArduinoHelper')();
+=======
+>>>>>>> cwp-software/feature/262-aux-servos
 
     // Cockpit
     deps.cockpit.on('plugin.lights.toggle', function () {
@@ -16,7 +19,12 @@
     // Arduino
     deps.rov.on('status', function (data) {
       if ('LIGP' in data) {
+<<<<<<< HEAD
         deps.cockpit.emit('plugin.lights.level', data.LIGP);
+=======
+        var level = 'level' + Math.ceil(data.LIGP * 10);
+        deps.cockpit.emit('plugin.lights.level', level);
+>>>>>>> cwp-software/feature/262-aux-servos
       }
     });
 
@@ -47,7 +55,11 @@
       if (lights < 0)
         lights = 0;
 
+<<<<<<< HEAD
       var command = 'ligt(' + ArduinoHelper.serial.packPercent(value) + ')';
+=======
+      var command = 'ligt(' + deps.physics.mapLight(value) + ')';
+>>>>>>> cwp-software/feature/262-aux-servos
       deps.rov.send(command);
 
     };

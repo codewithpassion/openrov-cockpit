@@ -4,7 +4,11 @@
  * This file holds the controller logic.  It manages the connection to the Atmega328.
  *
  */
+<<<<<<< HEAD
 var path = require('path'), spawn = require('child_process').spawn, CONFIG = require('./config'), StatusReader = require('./StatusReader'), ArduinoHelper = require('./ArduinoHelper'), logger = require('./logger').create(CONFIG), EventEmitter = require('events').EventEmitter, Hardware = require('../' + CONFIG.Hardware);
+=======
+var path = require('path'), spawn = require('child_process').spawn, CONFIG = require('./config'), StatusReader = require('./StatusReader'), ArduinoPhysics = require('./ArduinoPhysics'), logger = require('./logger').create(CONFIG), EventEmitter = require('events').EventEmitter, Hardware = require('../' + CONFIG.Hardware);
+>>>>>>> cwp-software/feature/262-aux-servos
 var setup_serial = function () {
   var location = path.join(__dirname, '..', './linux');
   logger.log('Starting the script from ' + location + ' to setup UART1...');
@@ -26,21 +30,38 @@ var OpenROVController = function (eventLoop, client) {
   var controller = this;
   var serial;
   var globalEventLoop = eventLoop;
+<<<<<<< HEAD
   this.physics = new ArduinoHelper().physics;
   this.hardware = new Hardware();
   this.cockpit = client;
 
+=======
+  this.physics = new ArduinoPhysics();
+  this.hardware = new Hardware();
+  this.cockpit = client;
+
+  setInterval(function () {
+    controller.emit('status', statusdata);
+  }, 1000);
+
+>>>>>>> cwp-software/feature/262-aux-servos
   this.hardware.on('serial-recieved', function (data) {
     globalEventLoop.emit('serial-recieved', data);
   });
 
   this.hardware.on('status', function (status) {
+<<<<<<< HEAD
     statusdata = {};
 
     for (var i in status) {
       statusdata[i] = status[i];
     }
     controller.emit('status', statusdata);
+=======
+    for (var i in status) {
+      statusdata[i] = status[i];
+    }
+>>>>>>> cwp-software/feature/262-aux-servos
     if ('ver' in status) {
       controller.ArduinoFirmwareVersion = status.ver;
     }

@@ -10,6 +10,7 @@
 # bits.
 #
 
+<<<<<<< HEAD
 
 if [ -f /sys/class/leds/beaglebone:green:heartbeat/ ]; then
   led0="/sys/class/leds/beaglebone:green:heartbeat"
@@ -27,23 +28,41 @@ echo none > ${led0}/trigger || true
 echo none > ${led1}/trigger || true
 echo none > ${led2}/trigger || true
 echo none > ${led3}/trigger || true
+=======
+echo none > /sys/class/leds/beaglebone\:green\:heartbeat/trigger || true
+echo none > /sys/class/leds/beaglebone\:green\:mmc0/trigger || true
+echo none > /sys/class/leds/beaglebone\:green\:usr2/trigger || true
+echo none > /sys/class/leds/beaglebone\:green\:usr3/trigger || true
+>>>>>>> cwp-software/feature/262-aux-servos
 
 if [ -f /var/.RESIZE_ROOT_PARTITION ]; then
   rm /var/.RESIZE_ROOT_PARTITION
   touch /var/.RESIZE_ROOT
 
+<<<<<<< HEAD
   echo 255 > ${led0}/brightness || true
   echo 255 > ${led1}//brightness || true
+=======
+  echo 255 > /sys/class/leds/beaglebone\:green\:heartbeat/brightness || true
+  echo 255 > /sys/class/leds/beaglebone\:green\:mmc0/brightness || true
+>>>>>>> cwp-software/feature/262-aux-servos
   /opt/openrov/cockpit/linux/expand_root_partition.sh
   # the expand script initiates a reboot
   exit 0
 fi
 
 if [ -f /var/.RESIZE_ROOT ]; then
+<<<<<<< HEAD
   echo 255 > ${led0}/brightness || true
   echo 0 > ${led1}/brightness || true
   echo 255 > ${led2}/brightness || true
   echo 0 > ${led3}/brightness || true
+=======
+  echo 255 > /sys/class/leds/beaglebone\:green\:heartbeat/brightness || true
+  echo 0 > /sys/class/leds/beaglebone\:green\:mmc0/brightness || true
+  echo 255 > /sys/class/leds/beaglebone\:green\:usr2/brightness || true
+  echo 0 > /sys/class/leds/beaglebone\:green\:usr3/brightness || true
+>>>>>>> cwp-software/feature/262-aux-servos
   resize2fs /dev/mmcblk0p2
   rm /var/.RESIZE_ROOT
   # done, we can start normaly
@@ -53,14 +72,27 @@ if [ ! -f /var/swapfile ]; then
   bash /opt/openrov/cockpit/linux/addswapfile.sh
 fi
 
+<<<<<<< HEAD
 nice -n 19 /opt/openrov/cockpit/linux/knight-rider.js &
 
 # load the device tree overlay for pin 25 (RESET) and SPI
 #CAPEMGR=$( find /sys/devices/ -name bone_capemgr* | head -n 1 )
 #echo OPENROV-RESET > $CAPEMGR/slots
 #echo BB-SPI0DEV > $CAPEMGR/slots
+=======
+nice -n 19 /opt/openrov/cockpit/linux/knight-rider.js & 
+ 
+# load the device tree overlay for pin 25 (RESET) and SPI
+CAPEMGR=$( find /sys/devices/ -name bone_capemgr* | head -n 1 )
+echo OPENROV-RESET > $CAPEMGR/slots
+echo BB-SPI0DEV > $CAPEMGR/slots
+>>>>>>> cwp-software/feature/262-aux-servos
 
 #auto detect configuration and update environment settings
 . /opt/openrov/cockpit/linux/system-detect.sh || /bin/true
 
 exit 0
+<<<<<<< HEAD
+=======
+
+>>>>>>> cwp-software/feature/262-aux-servos

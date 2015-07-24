@@ -170,6 +170,7 @@
     this.cockpit.rov.on('status', function (data) {
       capes.UpdateStatusIndicators(data);
     });
+<<<<<<< HEAD
 
     // if the user incremented/decremented the brightness, we don't wan't to switch it on/off when he let's go
     // the button, so we only toggle the light if there was no left/right before
@@ -195,6 +196,8 @@
     };
     capes.cockpit.emit('headsUpMenu.register', brightnessHeadsUp);
 
+=======
+>>>>>>> cwp-software/feature/262-aux-servos
   };
   capestatus.Capestatus.prototype.UpdateStatusIndicators = function UpdateStatusIndicators(data) {
     var self = this;
