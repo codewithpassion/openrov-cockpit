@@ -6,7 +6,11 @@ function settings(deps) {
   function getPreferences(config) {
     var preferences = config.preferences.get(PREFERENCES);
     if (preferences == undefined) {
+<<<<<<< HEAD
       preferences = { '1': { name: '1', enabled: false, pin: 13 }, '2': { name: '2', enabled: false, pin: 14} };
+=======
+      preferences = { '1': { name: '1', enabled: false, pin: 9 }, '2': { name: '2', enabled: false, pin: 10} };
+>>>>>>> cwp-software/feature/262-aux-servos
       config.preferences.set(PREFERENCES, preferences);
     }
     console.log('Aux Servo settings loaded preferences: ' + JSON.stringify(preferences));
@@ -35,4 +39,8 @@ function settings(deps) {
     });
   };
 }
+<<<<<<< HEAD
 module.exports = settings;
+=======
+module.exports = settings;
+>>>>>>> cwp-software/feature/262-aux-servos

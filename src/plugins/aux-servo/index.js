@@ -6,7 +6,11 @@ function auxServo(name, deps) {
   settings.register();
 
   var configureServo = function(servo){
+<<<<<<< HEAD
     deps.rov.send('xsrv.cfg(' + servo.pin + ',' + servo.min + ',' + servo.max + ')');
+=======
+    deps.rov.send('xsrv.cfg(' + servo.name + ', ' + servo.pin + ',' + servo.min + ',' + servo.max + ')');
+>>>>>>> cwp-software/feature/262-aux-servos
     settings.saveServoConfig(servo);
   };
 
@@ -16,6 +20,7 @@ function auxServo(name, deps) {
 
   deps.rov.on('status', function(status){
     if ('xsrv.ext' in status) {
+<<<<<<< HEAD
       deps.io.sockets.emit('auxservo-executed', status['xsrv.ext']);
       delete status['xsrv.ext'];
     }
@@ -34,5 +39,22 @@ function auxServo(name, deps) {
     });
 
   });
+=======
+      deps.cockpit.emit('plugin.aux-servo.executed', status['xsrv.ext']);
+      setTimeout(function() {delete status['xsrv.ext'];}, 1000);
+    }
+  });
+
+  deps.cockpit.on('plugin.aux-servo.config', function (config) {
+    console.log('plugin.aux-servo.config ' + config);
+    configureServo(config);
+  });
+
+  deps.cockpit.on('plugin.aux-servo.execute', function (command) {
+    console.log('plugin.aux-servo.execute ' + command);
+    execute(command);
+  });
+
+>>>>>>> cwp-software/feature/262-aux-servos
 }
 module.exports = auxServo;

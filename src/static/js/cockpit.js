@@ -62,7 +62,11 @@
   Cockpit.prototype.loadUiTheme = function(done) {
     var defaultUiName = 'standard-ui'; //temp
     var self = this;
+<<<<<<< HEAD
     $.get('plugin/ui-selector', function (config) {
+=======
+    $.get('/plugin/ui-selector', function (config) {
+>>>>>>> cwp-software/feature/262-aux-servos
       if (config.selectedUi && config.selectedUi.trim().length > 0) {
         self.uiLoader.load(config.selectedUi, done);
       }

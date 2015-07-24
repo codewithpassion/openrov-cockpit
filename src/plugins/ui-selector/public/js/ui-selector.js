@@ -28,7 +28,11 @@
 
   UiSelector.prototype.listen = function() {
     var self = this;
+<<<<<<< HEAD
     $.get('plugin/ui-selector', function (config) {
+=======
+    $.get('/plugin/ui-selector', function (config) {
+>>>>>>> cwp-software/feature/262-aux-servos
       if (config.selectedUi) {
         self.model.setSelectedUiByName(config.selectedUi);
       }
@@ -59,4 +63,8 @@
 
 
   window.Cockpit.plugins.push(UiSelector);
+<<<<<<< HEAD
 })();
+=======
+})();
+>>>>>>> cwp-software/feature/262-aux-servos
