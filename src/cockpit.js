@@ -43,7 +43,7 @@ var deps = {
   camera: camera,
   cockpit: client,
   config: CONFIG,
-  globalEventLoop: globalEventLoop,
+  globalEventLoop: globalEventLoop
 };
 
 app.get('/config.js', function (req, res) {
