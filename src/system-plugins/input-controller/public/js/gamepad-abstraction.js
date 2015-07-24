@@ -27,17 +27,6 @@ inputController.GamepadAbstraction = function (cockpit) {
     else {
       control = gp.currentButton + '+' + e.control;
     }
-<<<<<<< HEAD
-    if (gp.assignment[control] !== undefined)
-      gp.assignment[control].BUTTON_DOWN();
-  });
-  gamepad.bind(Gamepad.Event.BUTTON_UP, function (e) {
-    if (gp.currentButton === e.control) { gp.currentButton = undefined; }
-    if (gp.assignment[e.control] !== undefined) {
-      if (gp.assignment[e.control].BUTTON_UP !== undefined) {
-        gp.assignment[e.control].BUTTON_UP();
-      }
-=======
     if (gp.assignment[control] !== undefined && gp.assignment[control].BUTTON_DOWN)
       gp.assignment[control].BUTTON_DOWN();
   });
@@ -49,7 +38,6 @@ inputController.GamepadAbstraction = function (cockpit) {
     }
     if (gp.assignment[control] !== undefined && gp.assignment[control].BUTTON_UP) {
       gp.assignment[control].BUTTON_UP();
->>>>>>> cwp-software/feature/262-aux-servos
     }
   });
   gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {

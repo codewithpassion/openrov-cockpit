@@ -18,13 +18,7 @@ inputController.Gamepad = function(cockpit) {
               var subKey = gpKey + '+' + secondary.bindings.gamepad;
               self.gp.assignment[subKey] = { };
               if (secondary.down !== undefined) self.gp.assignment[subKey].BUTTON_DOWN = secondary.down;
-<<<<<<< HEAD
-              if (secondary.up !== undefined) self.gp.assignment[subKey].BUTTON_UP = secondary.up;
-=======
-              if (secondary.up !== undefined) {
-                self.gp.assignment[subKey].BUTTON_UP = secondary.up;
-              }
->>>>>>> cwp-software/feature/262-aux-servos
+              if (secondary.up !== undefined)   self.gp.assignment[subKey].BUTTON_UP = secondary.up;
               if (secondary.axis !== undefined) self.gp.assignment[subKey].AXIS_CHANGED = secondary.axis;
             }
           });

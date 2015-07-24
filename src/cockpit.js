@@ -8,10 +8,7 @@
  */
 var CONFIG = require('./lib/config'), fs = require('fs'), express = require('express'), app = express(), server = require('http').createServer(app), io = require('socket.io').listen(server, { log: false, origins: '*:*' }), EventEmitter = require('events').EventEmitter, OpenROVCamera = require(CONFIG.OpenROVCamera), OpenROVController = require(CONFIG.OpenROVController), logger = require('./lib/logger').create(CONFIG), mkdirp = require('mkdirp'), path = require('path');
 var PluginLoader = require('./lib/PluginLoader');
-<<<<<<< HEAD
-=======
 var ArduinoPhysics = require('./lib/ArduinoPhysics');
->>>>>>> cwp-software/feature/262-aux-servos
 var CockpitMessaging = require('./lib/CockpitMessaging');
 app.configure(function () {
   app.use(express.static(__dirname + '/static/'));
@@ -47,12 +44,8 @@ var deps = {
   camera: camera,
   cockpit: client,
   config: CONFIG,
-<<<<<<< HEAD
-  globalEventLoop: globalEventLoop
-=======
   globalEventLoop: globalEventLoop,
   physics: new ArduinoPhysics()
->>>>>>> cwp-software/feature/262-aux-servos
 };
 
 app.get('/config.js', function (req, res) {
@@ -172,7 +165,6 @@ function addPluginAssets(result) {
   scripts = scripts.concat(result.scripts);
   styles = styles.concat(result.styles);
   result.assets.forEach(function (asset) {
-<<<<<<< HEAD
     console.log("TEST: " + asset.path);
     app.use('/' + asset.path, express.static(asset.assets));
   });
@@ -183,17 +175,6 @@ loader.loadPlugins(path.join(__dirname, 'system-plugins'), 'system-plugin', deps
 loader.loadPlugins(path.join(__dirname, 'plugins'), 'plugin', deps, addPluginAssets);
 mkdirp.sync('/usr/share/cockpit/bower_components');
 loader.loadPlugins('/usr/share/cockpit/bower_components', 'community-plugin', deps, addPluginAssets, function (file) {
-=======
-    app.use(asset.path, express.static(asset.assets));
-  });
-}
-var loader = new PluginLoader();
-loader.loadPlugins(path.join(__dirname, 'ui-plugins'), '/ui-plugin', deps, addPluginAssets);
-loader.loadPlugins(path.join(__dirname, 'system-plugins'), '/system-plugin', deps, addPluginAssets);
-loader.loadPlugins(path.join(__dirname, 'plugins'), '/plugin', deps, addPluginAssets);
-mkdirp.sync('/usr/share/cockpit/bower_components');
-loader.loadPlugins('/usr/share/cockpit/bower_components', '/community-plugin', deps, addPluginAssets, function (file) {
->>>>>>> cwp-software/feature/262-aux-servos
   return file.substring(0, 15) === 'openrov-plugin-';
 });
 controller.start();

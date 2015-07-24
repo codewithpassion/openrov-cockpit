@@ -9,10 +9,6 @@ env:
   - ARCH=arm
 script:
 - cat /etc/hosts
-<<<<<<< HEAD
-=======
-- npm install --arch=armhf
->>>>>>> cwp-software/feature/262-aux-servos
 - "bash -ex .travis-ci.sh"
 
 after_success:

@@ -21,28 +21,18 @@
           auxs.cockpit.emit('headsUpMenu.enable', headsUpName);
         }
       });
-<<<<<<< HEAD
-      $('#auxServo-settings').show();
-=======
       auxs.auxSettings.show();
->>>>>>> cwp-software/feature/262-aux-servos
     };
     this.disable = function () {
       auxs.settingsModel.servos().forEach(function(servo) {
         var headsUpName = 'aux-servo.' + servo.name();
         auxs.cockpit.emit('headsUpMenu.disable', headsUpName);
       });
-<<<<<<< HEAD
-      $('#auxServo-settings').hide();
-=======
       auxs.auxSettings.hide();
->>>>>>> cwp-software/feature/262-aux-servos
     };
 
     var registerHeadsUpMenuItem = function(servo) {
       var shouldTrigger = true;
-<<<<<<< HEAD
-=======
       var leftInterval = null;
       var rightInterval = null;
       var moveRight = function(curentValue) {
@@ -65,7 +55,6 @@
             return curentValue;
           };
 
->>>>>>> cwp-software/feature/262-aux-servos
       var item = {
         name: 'aux-servo.' + servo.name(),
         enabled: servo.enabled, // pass the enabled observable over to the headsup menu
@@ -86,25 +75,6 @@
         },
         left: function () {
           shouldTrigger = false;
-<<<<<<< HEAD
-          var newValue = servo.currentValue() - servo.stepWidth();
-          if (newValue < servo.min()) {
-            newValue = servo.min();
-          }
-          servo.setValue(newValue);
-        },
-        right: function () {
-          shouldTrigger = false;
-          var newValue = parseInt(servo.currentValue()) + parseInt(servo.stepWidth());
-          console.log(newValue);
-          if (newValue > servo.max()) {
-            newValue = servo.max();
-          }
-          servo.setValue(newValue);
-        }
-      };
-      auxs.cockpit.emit('headsUpMenu.register', item);
-=======
           var curentValue = servo.currentValue();
           if (leftInterval) { clearInterval(leftInterval);}
           curentValue  = moveLeft(curentValue);
@@ -135,7 +105,6 @@
         auxs.cockpit.extensionPoints.headsUpMenu.register(item);
       }
 
->>>>>>> cwp-software/feature/262-aux-servos
     };
 
     var loadServo = function(servoConfig) {
@@ -159,11 +128,6 @@
 
     // Add required UI elements
     var jsFileLocation = urlOfJsFile('aux-servo.js');
-<<<<<<< HEAD
-    $('#plugin-settings').append('<div id="auxServo-settings"></div>');
-    $('#auxServo-settings').load(jsFileLocation + '../settings.html', function () {
-      ko.applyBindings(auxs.settingsModel, $('#auxServo-settings')[0]);
-=======
     cockpit.extensionPoints.rovSettings.append('<div id="auxServo-settings"></div>');
     auxs.auxSettings = cockpit.extensionPoints.rovSettings.find('#auxServo-settings');
     auxs.auxSettings.load(jsFileLocation + '../settings.html', function () {
@@ -173,7 +137,6 @@
         .load(jsFileLocation + '../templates.html', function() {
           ko.applyBindings(auxs.settingsModel, auxs.auxSettings[0]);
         });
->>>>>>> cwp-software/feature/262-aux-servos
     });
 
     return auxs;
@@ -182,17 +145,6 @@
   auxServoNs.AuxServo.prototype.listen = function listen() {
     var self = this;
 
-<<<<<<< HEAD
-    self.cockpit.on('auxservo-config', function(config) {
-      self.cockpit.socket.emit('auxservo-config', config);
-    });
-
-    self.cockpit.on('auxservo-execute', function(command) {
-      self.cockpit.socket.emit('auxservo-execute', command);
-    });
-
-    self.cockpit.socket.on('auxservo-executed', function(result) {
-=======
     self.cockpit.on('plugin.aux-servo.config', function(config) {
       self.cockpit.rov.emit('plugin.aux-servo.config', config);
     });
@@ -202,7 +154,6 @@
     });
 
     self.cockpit.rov.on('plugin.aux-servo.executed', function(result) {
->>>>>>> cwp-software/feature/262-aux-servos
       var subParts = result.split(',');
       if (self.settingsModel.servos().length > 0) {
         self.settingsModel.servos().forEach(function (servo) {

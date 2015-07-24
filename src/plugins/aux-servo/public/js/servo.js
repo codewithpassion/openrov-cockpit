@@ -48,37 +48,22 @@ auxServoNs.Servo = function(eventEmitter, name, pin, enabled) {
   };
 
   self.apply = function() {
-<<<<<<< HEAD
-    self.eventEmitter.emit('auxservo-config', self.toJs());
-=======
     self.eventEmitter.emit('plugin.aux-servo.config', self.toJs());
->>>>>>> cwp-software/feature/262-aux-servos
     self.isChanged(false);
   };
 
   self.setValue = function(newValue) {
     self.executing(true);
-<<<<<<< HEAD
-    self.eventEmitter.emit('auxservo-execute', {
-      pin: self.pin(),
-      value: newValue
-    });
-=======
     self.eventEmitter.emit('plugin.aux-servo.execute', {
       pin: self.pin(),
       value: newValue
     });
     console.log(newValue);
->>>>>>> cwp-software/feature/262-aux-servos
   };
 
   self.executeTest = function() {
     self.isExecuted(false);
-<<<<<<< HEAD
-    self.eventEmitter.emit('auxservo-execute', {
-=======
     self.eventEmitter.emit('plugin.aux-servo.execute', {
->>>>>>> cwp-software/feature/262-aux-servos
       pin: self.pin(),
       value: self.testValue()
     });

@@ -24,12 +24,8 @@ $(function () {
     CONFIG = {};
     CONFIG.sample_freq = 20;
   } else {
-<<<<<<< HEAD
     var socket = window.io.connect(window.location.protocol + '//' +
                  window.location.host+ ':8080');
-=======
-    var socket = window.io.connect();
->>>>>>> cwp-software/feature/262-aux-servos
   }
 
 

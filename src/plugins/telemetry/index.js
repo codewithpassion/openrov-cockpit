@@ -1,7 +1,6 @@
 function telemetry(name, deps) {
   console.log('This is where Telemetry code would execute in the node process.');
 
-<<<<<<< HEAD
   var statusdata = {};
 
   deps.rov.on('status', function(data){
@@ -23,10 +22,3 @@ function telemetry(name, deps) {
 
 }
 module.exports = telemetry;
-=======
-  deps.rov.on('status', function(data){
-    deps.cockpit.emit('plugin.telemetry.logData', data);
-  });
-}
-module.exports = telemetry;
->>>>>>> cwp-software/feature/262-aux-servos

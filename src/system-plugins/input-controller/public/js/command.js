@@ -33,11 +33,6 @@ inputController.Command = function(control) {
   return this;
 };
 
-<<<<<<< HEAD
 inputController.Command.prototype.down = function() {};
 inputController.Command.prototype.up = function() {};
-=======
-//inputController.Command.prototype.down = function() {};
-//inputController.Command.prototype.up = function() {};
->>>>>>> cwp-software/feature/262-aux-servos
 inputController.Command.prototype.axis = function(v) {};
